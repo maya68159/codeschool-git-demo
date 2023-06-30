@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Palete</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <h1>RGB Color Palette</h1>
+        <div class="editor">
+          <span>Red</span>
+          <input type="number" min="0" max="255" v-model="rgbColor.red" />
+          <span>Green</span>
+          <input type="number" min="0" max="255" v-model="rgbColor.green" />
+          <span>Blue</span>
+          <input type="number" min="0" max="255" v-model="rgbColor.blue" />
+        </div>
+        <button v-on:click="changeColor()">Add Color</button>
+        <div
+          class="color-box"
+          v-bind:style="{backgroundColor: rgbString}"
+        ></div>
+        <div class="past-container">
+          <div class="individual-container" v-for="color in colorList">
+            <div
+              class="color-circle"
+              v-bind:style="{backgroundColor: color.code}"
+            ></div>
+            <div class="color-name">red: {{color.red}}</div>
+            <div class="color-name">green: {{color.green}}</div>
+            <div class="color-name">blue: {{color.blue}}</div>
+          </div>
+        </div>
+        <div class="module-container" v-if="errorModule">
+          <div v-on:click="closeModule()" class="exit">X</div>
+          <div v-for="error in errors" class="errors">
+            <div class="error">{{error}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
