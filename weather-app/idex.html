@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Manrope&family=Quicksand:wght@300&display=swap" rel="stylesheet">
+<link href="icofont.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+        <div class="container">
+            <div
+              class="top-pic"
+              v-bind:style="image">
+              <div class="data-container">
+                  <p class="weather-code">{{ weatherCode }}</p>
+                  <h1 class="temp">{{ highTemp }}</h1>
+                  <p class="low-temp">{{ lowTemp }}</p>
+                  <p class="precipitation">{{ precipitation }}</p>
+              </div>
+            </div>
+            <div class="weekly-container">
+                <img class="mountain" src="mountain.png">
+                <div class="weekly-forecast">
+                    <h2>Weekly Forecast</h2>
+                    <div class="weekly">
+                        <div class="fortemp">
+                            <div class="forecast" v-for="temp in forecastHigh">
+                                <p class="forecastTemp">{{temp}}</p>
+                            </div>
+                        </div>
+                        <div class="forcode">
+                            <div class="forecast" v-for="code in forecastIcons">
+                                <i class="icon" v-bind:class=code></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
